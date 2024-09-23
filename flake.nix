@@ -13,6 +13,8 @@
       buildInputs = [
         pkgs.php83Packages.composer
         pkgs.php83
+        pkgs.nodejs_22
+        pkgs.nodePackages.npm
       ];
     };
   };
