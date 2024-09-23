@@ -11,8 +11,12 @@
         <title>{{ $title ?? 'Page Title' }}</title>
 
         @vite('resources/css/app.css')
+
+        @fluxStyles
     </head>
     <body>
         {{ $slot }}
+
+        @fluxScripts
     </body>
 </html>
