@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreKanbanRequest;
-use App\Http\Requests\UpdateKanbanRequest;
-use App\Models\Kanban;
+use App\Http\Requests\StoreBoardRequest;
+use App\Http\Requests\UpdateBoardRequest;
+use App\Models\Board;
 
-class KanbanController extends Controller
+class BoardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class KanbanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreKanbanRequest $request)
+    public function store(StoreBoardRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class KanbanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kanban $kanban)
+    public function show(Board $board)
     {
         //
     }
@@ -43,7 +43,7 @@ class KanbanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kanban $kanban)
+    public function edit(Board $board)
     {
         //
     }
@@ -51,7 +51,7 @@ class KanbanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKanbanRequest $request, Kanban $kanban)
+    public function update(UpdateBoardRequest $request, Board $board)
     {
         //
     }
@@ -59,7 +59,7 @@ class KanbanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kanban $kanban)
+    public function destroy(Board $board)
     {
         //
     }
