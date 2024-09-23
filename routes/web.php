@@ -1,8 +1,8 @@
 <?php
 
-use App\Livewire\Kanban\Index;
+use App\Livewire\Board\Show;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/kanban');
+Route::redirect('/', '/boards/{board}');
 
-Route::get('/kanban', Index::class);
+Route::get('/boards/{board}', Show::class);

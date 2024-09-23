@@ -18,6 +18,7 @@ class BoardFactory extends Factory
     {
         return [
             'name' => fake()->word(),
+            'description' => fake()->sentence(10),
             'default' => false,
         ];
     }
