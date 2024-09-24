@@ -4,27 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Board extends Model
+class Label extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $fillable = [
         'name',
-        'description',
-        'default',
+        'color',
     ];
 
-    public function labels(): HasMany
+    public function board(): BelongsTo
     {
-        return $this->hasMany(Label::class);
+        return $this->belongsTo(Board::class);
     }
 
-    public function listings(): HasMany
+    public function tasks(): HasMany
     {
-        return $this->hasMany(Listing::class);
+        return $this->hasMany(Task::class);
     }
 }

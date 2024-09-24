@@ -39,25 +39,21 @@
 
             <flux:spacer />
 
-            <flux:navlist variant="outline">
-                <flux:navlist.item icon="cog-6-tooth" href="#">Settings</flux:navlist.item>
-                <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
-            </flux:navlist>
+            <!-- <flux:navlist variant="outline"> -->
+            <!--     <flux:navlist.item icon="cog-6-tooth" href="#">Settings</flux:navlist.item> -->
+            <!--     <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item> -->
+            <!-- </flux:navlist> -->
 
-            <!-- <flux:dropdown position="top" align="left" class="max-lg:hidden"> -->
-            <!--     <flux:profile avatar="https://fluxui.dev/img/demo/user.png" name="Olivia Martin" /> -->
-            <!---->
-            <!--     <flux:menu> -->
-            <!--         <flux:menu.radio.group> -->
-            <!--             <flux:menu.radio checked>Olivia Martin</flux:menu.item> -->
-            <!--             <flux:menu.radio>Truly Delta</flux:menu.item> -->
-            <!--         </flux:menu.radio.group> -->
-            <!---->
-            <!--         <flux:menu.separator /> -->
-            <!---->
-            <!--         <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item> -->
-            <!--     </flux:menu> -->
-            <!-- </flux:dropdown> -->
+            @auth
+                <flux:separator />
+
+                <flux:navlist variant="outline">
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <flux:navlist.item icon="lock-closed" type="submit">Logout</flux:navlist.item>
+                    </form>
+                </flux:navlist>
+            @endauth
         </flux:sidebar>
 
         <flux:header class="lg:hidden">

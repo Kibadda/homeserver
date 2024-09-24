@@ -13,33 +13,63 @@ class Show extends Component
 
     #[Rule('required')]
     public string $name = '';
-
-    #[Rule('required|hex_color')]
-    public string $color = '';
+    public string $description = '';
+    public bool $default = false;
 
     public function render()
     {
         return view('livewire.board.show');
     }
 
-    public function add()
+    public function mount()
     {
-        $this->validate();
+        $this->name = $this->board->name;
+        $this->description = $this->board->description;
+        $this->default = $this->board->default;
+    }
 
-        $this->board->listings()->create([
+    public function edit()
+    {
+        $this->modal('board-edit')->show();
+    }
+
+    public function update()
+    {
+        $this->validateOnly('name');
+
+        $this->board->update([
             'name' => $this->name,
-            'color' => $this->color,
+            'description' => $this->description,
+            'default' => $this->default,
         ]);
 
-        $this->reset('name', 'color');
+        $this->modal('board-edit')->close();
+    }
 
-        $this->modal('list-add')->close();
+    #[Rule('required')]
+    public string $listingName = '';
+    #[Rule('hex_color|nullable')]
+    public ?string $listingColor = null;
+
+    public function add()
+    {
+        $this->validateOnly('listingName');
+        $this->validateOnly('listingColor');
+
+        $this->board->listings()->create([
+            'name' => $this->listingName,
+            'color' => $this->listingColor,
+        ]);
+
+        $this->reset('listingName', 'listingColor');
+
+        $this->modal('listing-add')->close();
     }
 
     public function remove($id)
     {
         $this->board->listings()->findOrFail($id)->delete();
 
-        Flux::modal('list-remove')->close();
+        Flux::modal('listing-remove')->close();
     }
 }

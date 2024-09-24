@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Board;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,11 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('boards', function (Blueprint $table) {
+        Schema::create('labels', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->text('description');
-            $table->boolean('default')->default(false);
+            $table->string('name');
+            $table->string('color');
+            $table->foreignIdFor(Board::class);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('boards');
+        Schema::dropIfExists('labels');
     }
 };
